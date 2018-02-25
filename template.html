@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Rock Paper Scissors</title>
+
+  <script>
+  let playerSelection = prompt("What move will you play? (type rock, paper or scissors)", "").toLowerCase();
+  let moves = ["rock", "paper", "scissors"];
+
+  function computerPlay() {
+    return computersMove = moves[Math.floor(Math.random() * moves.length)];
+  }
+
+  function gameRound() {
+
+    const outcomeDraw = "It's a draw!";
+    const outcomeWin = "You win!";
+    const outcomeLoss = "You lost!";
+    const invalidInput = "Sorry, invalid input. Please try again!";
+
+    if (playerSelection == "rock") {
+      if (computersMove == "rock") {
+        return outcomeDraw;
+      }
+      if (computersMove == "paper") {
+        return outcomeLoss;
+      }
+      if (computersMove == "scissors") {
+        return outcomeWin;
+      }
+    }
+    else if (playerSelection == "paper"){
+      if (computersMove == "rock") {
+        return outcomeWin;
+      }
+      if (computersMove == "paper") {
+        return outcomeDraw;
+      }
+      if (computersMove == "scissors") {
+        return outcomeLoss;
+      }
+    }
+    else if (playerSelection == "scissors") {
+      if (computersMove == "rock") {
+        return outcomeLoss;
+      }
+      if (computersMove == "paper") {
+        return outcomeWin;
+      }
+      if (computersMove == "scissors") {
+        return outcomeDraw;
+      }
+    }
+    else {
+      return invalidInput;
+    }
+  }
+
+  computerPlay();
+  gameRound();
+
+  console.log("User played: " + playerSelection);
+  console.log("Computer played: " + computersMove);
+
+
+  console.log(gameRound());
+  </script>
+
+</head>
+
+
+<body>
+</body>
+
+</html>
