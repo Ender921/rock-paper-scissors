@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Rock Paper Scissors</title>
+
+  <script>
+
+// Generates the prompt for user input and sets the moves for the computer as well as the default scores.
+// let playerSelection = prompt("What move will you play? (type Rock, Paper or Scissors)", "");
+  let moves = ["Rock", "Paper", "Scissors"];
+  let playerScore = 0;
+  let computerScore = 0;
+  let playerSelection = null;
+  let finalResults = null;
+
+
+// Runs the computers play - returns computerSelection
+    function computerPlay(moves) {
+      return computerSelection = moves[Math.floor(Math.random() * moves.length)];
+    }
+    computerPlay(moves);
+
+
+// Defines the outcome messages
+  const outcomeDraw = "It's a draw! ";
+  const outcomeWin = "You win! " + playerSelection + " beats " + computerSelection + ".";
+  const outcomeLoss = "You lost. " + computerSelection + " beats " + playerSelection + ".";
+  const errorMessage = "Whoops, looks like something went wrong! :/";
+
+
+
+// Plays a round of Rock Paper Scissors
+function playRound(playerSelection,computerSelection) {
+  // If player enters rock:
+  switch (playerSelection.toLowerCase()) {
+    case "rock":
+    switch (computerSelection.toLowerCase()) {
+      case "rock": return outcomeDraw;
+      break;
+
+      case "paper": return outcomeLoss;
+      break;
+
+      case "scissors": return outcomeWin;
+      break;
+
+      default: errorMessage;
+    }
+  }
+  // If player enters paper:
+  switch (playerSelection.toLowerCase()) {
+    case "paper":
+    switch (computerSelection.toLowerCase()) {
+      case "rock": return outcomeWin;
+      break;
+
+      case "paper": return outcomeDraw;
+      break;
+
+      case "scissors": return outcomeLoss;
+      break;
+
+      default: errorMessage;
+    }
+  }
+  // If player enters scissors:
+  switch (playerSelection.toLowerCase()) {
+    case "scissors":
+    switch (computerSelection.toLowerCase()) {
+      case "rock": return outcomeLoss;
+      break;
+
+      case "paper": return outcomeWin;
+      break;
+
+      case "scissors": return outcomeDraw;
+      break;
+
+      default: errorMessage;
+    }
+  }
+}
+
+// Calculates who won
+function finalResult(playerScore,computerScore) {
+  if (playerScore > computerScore) {
+    return "PlayerWins";
+  }
+  else if (playerScore < computerScore) {
+    return "ComputerWins";
+  }
+  else {
+    return "Draw";
+  }
+}
+
+
+// Plays 5 rounds of Rock Paper Scissors and outputs the results.
+
+function game() {
+  // For loop to repeat the gameplay 5 times
+  for (roundNumber = 1; roundNumber <= 5; roundNumber++) {
+    let playerSelection = prompt("What move will you play? (type Rock, Paper or Scissors)", "");
+    computerPlay(moves);
+    console.log("You played " + playerSelection);
+    console.log("The computer played " + computerSelection);
+    let result = playRound(playerSelection,computerSelection);
+    if (result === outcomeWin) {
+      playerScore++;
+      console.log("You won! The score is " + playerScore + " to you, and " + computerScore + " to the computer.");
+    }
+    if (result === outcomeLoss) {
+      computerScore++;
+      console.log("You lost! The score is " + playerScore + " to you, and " + computerScore + " to the computer.");
+    }
+    if (result === outcomeDraw) {
+      console.log("It's a tie! The scores remain " + playerScore + " to you and " + computerScore + " to the computer!");
+    }
+    // Code to run once 5 games have been played
+    if (roundNumber === 5) {
+      let finalResults = finalResult(playerScore,computerScore);
+      console.log("Game complete! Let's take a look at the final scores.");
+      console.log("You scored: " + playerScore);
+      console.log("The computer scored: " + computerScore);
+      if (finalResults === "PlayerWins") {
+        console.log("Congrats, you won!");
+      }
+      else if (finalResults === "ComputerWins") {
+        console.log("You lost! Better luck next time. ;)");
+      }
+      else if (finalResults === "Draw") {
+        console.log("It's a tie! Rematch? Refresh the page!");
+      }
+    }
+  }
+
+}
+
+game();
+
+
+
+// Outputs the result to the Console
+
+</script>
+
+</head>
+<body>
+</body>
+</html>
